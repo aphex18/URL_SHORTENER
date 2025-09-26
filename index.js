@@ -4,6 +4,8 @@ import "dotenv/config";
 
 import userRouter from './routes/user.routes.js';
 
+import urlRouter from './routes/url.routes.js';
+
 import { authenticationMiddleware } from './middlewares/auth.middleware.js';
 
 const app = express();
@@ -13,6 +15,8 @@ app.use(express.json());
 app.use(authenticationMiddleware);
 
 app.use("/user", userRouter);
+
+app.use(urlRouter);
 
 const PORT = process.env.PORT ?? 8000;
 
