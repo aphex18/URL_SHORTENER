@@ -4,7 +4,7 @@ import cors from 'cors';
 
 const corsOptions = {
   origin: [
-    'https://url-shortener-10.vercel.app',      // If you serve frontend on vercel
+    'https://urlshortener10.vercel.app',      // If you serve frontend on vercel
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
