@@ -1,7 +1,7 @@
 // Dashboard JavaScript (for shorten.html) - IMPROVED VERSION
 class DashboardManager {
     constructor() {
-        this.baseURL = 'https://url-shortener-10.up.railway.app'; // Change this to your backend URL
+        this.baseURL = 'https://urlshortener10.vercel.app'; // Change this to your backend URL
         this.token = sessionStorage.getItem('jwt_token');
         this.userUrls = [];
         this.currentUser = null;
