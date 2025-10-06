@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - URL Shortener</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <div class="auth-background">
+        <!-- Back to home button -->
+        <a href="index.html" class="back-home">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+
+        <!-- Login Card -->
+        <div class="auth-container">
+            <div class="auth-card login-card">
+                <div class="auth-header">
+                    <div class="logo">
+                        <i class="fas fa-link"></i>
+                        <span>URL Shortener</span>
+                    </div>
+                    <h1>Welcome Back!</h1>
+                    <p>Sign in to your account to continue</p>
+                </div>
+
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            class="form-control" 
+                            placeholder="Enter your email"
+                            required
+                        >
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            class="form-control" 
+                            placeholder="Enter your password"
+                            required
+                        >
+                        <span class="error-message" id="password-error"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full-width" id="login-btn">
+                        <span class="btn-text">
+                            <i class="fas fa-sign-in-alt"></i> Sign In
+                        </span>
+                        <div class="btn-spinner hidden">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? 
+                        <a href="signup.html" class="auth-link">Create one here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Floating background elements -->
+    <div class="floating-elements">
+        <div class="floating-circle purple"></div>
+        <div class="floating-circle blue"></div>
+        <div class="floating-circle pink"></div>
+        <div class="floating-circle orange"></div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

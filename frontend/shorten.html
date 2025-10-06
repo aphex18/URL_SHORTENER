@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - URL Shortener</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-background">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="logo">
+                        <i class="fas fa-link"></i>
+                        <span>URL Shortener</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <span class="welcome-text">Welcome back! |  👋</span>
+                    <button class="btn btn-secondary" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="dashboard-container">
+                
+                <!-- URL Shortening Section -->
+                <section class="shorten-section">
+                    <div class="section-card shorten-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-magic"></i> Create Short Link</h2>
+                            <p>Transform your long URLs into short, shareable links</p>
+                        </div>
+                        
+                        <form id="shorten-form" class="shorten-form">
+                            <div class="form-row">
+                                <div class="form-group url-group">
+                                    <label for="target-url" class="form-label">
+                                        <i class="fas fa-globe"></i> Target URL
+                                    </label>
+                                    <input 
+                                        type="url" 
+                                        id="target-url" 
+                                        class="form-control url-input" 
+                                        placeholder="https://example.com/your-long-url"
+                                        required
+                                    >
+                                    <span class="error-message" id="target-url-error"></span>
+                                </div>
+                                <div class="form-group code-group">
+                                    <label for="custom-code" class="form-label">
+                                        <i class="fas fa-edit"></i> Custom Code (Optional)
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="custom-code" 
+                                        class="form-control code-input" 
+                                        placeholder="my-custom-code"
+                                        pattern="[a-zA-Z0-9-_]+"
+                                        title="Letters, numbers, hyphens, underscores only"
+                                    >
+                                    <span class="error-message" id="custom-code-error"></span>
+                                </div>
+                                <div class="form-group button-group">
+                                    <button type="submit" class="btn btn-primary btn-shorten" id="shorten-btn">
+                                        <span class="btn-text">
+                                            <i class="fas fa-compress-alt"></i> Shorten
+                                        </span>
+                                        <div class="btn-spinner hidden">
+                                            <i class="fas fa-spinner fa-spin"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- URL Management Section -->
+                <section class="urls-section">
+                    <div class="section-card urls-card">
+                        <div class="card-header">
+                            <div class="header-content">
+                                <h2><i class="fas fa-list"></i> Your Links</h2>
+                                <div class="header-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-link"></i>
+                                        <span id="total-links">0</span> Links
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="header-actions">
+                                <div class="search-box">
+                                    <i class="fas fa-search"></i>
+                                    <input 
+                                        type="text" 
+                                        id="search-urls" 
+                                        placeholder="Search your links..."
+                                        class="search-input"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- URLs List -->
+                        <div id="urls-list" class="urls-list">
+                            <!-- URLs will be populated here -->
+                        </div>
+
+                        <!-- Empty State -->
+                        <div id="empty-state" class="empty-state hidden">
+                            <div class="empty-illustration">
+                                <i class="fas fa-link-slash"></i>
+                            </div>
+                            <h3>No links yet</h3>
+                            <p>Create your first short link above to get started!</p>
+                        </div>
+
+                        <!-- Loading State -->
+                        <div id="urls-loading" class="urls-loading hidden">
+                            <div class="loading-spinner">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                            <p>Loading your links...</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-check-circle"></i> Link Created Successfully!</h3>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="result-display">
+                    <div class="result-item">
+                        <label>Original URL:</label>
+                        <div class="url-display original" id="modal-original-url"></div>
+                    </div>
+                    <div class="result-item">
+                        <label>Short URL:</label>
+                        <div class="url-display short">
+                            <span id="modal-short-url"></span>
+                            <button class="copy-btn" id="modal-copy-btn" title="Copy to clipboard">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-primary" id="modal-copy-main">
+                        <i class="fas fa-copy"></i> Copy Link
+                    </button>
+                    <button class="btn btn-secondary" id="modal-close-btn">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
