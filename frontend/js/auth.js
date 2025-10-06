@@ -1,7 +1,7 @@
 // Authentication JavaScript (for login.html and signup.html)
 class AuthManager {
     constructor() {
-        this.baseURL = 'http://localhost:5000'; // Change this to your backend URL
+        this.baseURL = 'https://url-shortener-10.up.railway.app/'; // Change this to your backend URL
         this.init();
     }
 

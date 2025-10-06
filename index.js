@@ -4,9 +4,7 @@ import cors from 'cors';
 
 const corsOptions = {
   origin: [
-    'http://localhost:3000',      // If you serve frontend on port 3000
-    'http://127.0.0.1:5500',      // VS Code Live Server
-    'http://localhost:5500',      // Alternative Live Server port // else your domain here
+    'https://url-shortener-10.vercel.app/'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -43,3 +41,19 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })
+
+
+
+
+
+// const corsOptions = {
+//   origin: [
+//     'http://localhost:3000',      // If you serve frontend on port 3000
+//     'http://127.0.0.1:5500',      // VS Code Live Server
+//     'http://localhost:5500',      // Alternative Live Server port // else your domain here
+
+//   ],
+//   credentials: true,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization']
+// };
