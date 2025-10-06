@@ -4,7 +4,7 @@ import cors from 'cors';
 
 const corsOptions = {
   origin: [
-    'https://url-shortener-10.vercel.app/'
+    'https://url-shortener-10.vercel.app',      // If you serve frontend on vercel
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
     return res.json({status: "Server is running"})
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 })
 
