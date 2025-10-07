@@ -28,7 +28,7 @@ import { authenticationMiddleware } from './middlewares/auth.middleware.js';
 
 const app = express();
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 
 app.use(express.json());
