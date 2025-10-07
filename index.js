@@ -42,6 +42,12 @@ app.use(urlRouter);
 // Serve frontend files
 app.use(express.static(path.join(__dirname, 'frontend')));
 
+const PORT = process.env.PORT ?? 8000;
+
+app.get('/', (req, res) => {
+  return res.json({status: "Server is running"})
+});
+
 // Explicit routes for HTML pages
 app.get('/login.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/login.html'));
@@ -69,11 +75,6 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
-const PORT = process.env.PORT ?? 8000;
-
-app.get('/', (req, res) => {
-  return res.json({status: "Server is running"})
-});
 
 
 
