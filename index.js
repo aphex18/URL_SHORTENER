@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 const corsOptions = {
   origin: [
     'https://urlshortener10.vercel.app',      // If you serve frontend on vercel
-    'url-shortener-10.up.railway.app',
+    'https://url-shortener-10.up.railway.app',
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
