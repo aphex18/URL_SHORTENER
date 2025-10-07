@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 //   credentials: true,
 //   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 //   allowedHeaders: ['Content-Type', 'Authorization']
-// };
+// }; // you don't need this if you serve frontend and backend from same origin
 
 import "dotenv/config";
 
@@ -28,7 +28,7 @@ import { authenticationMiddleware } from './middlewares/auth.middleware.js';
 
 const app = express();
 
-// app.use(cors(corsOptions));
+// app.use(cors(corsOptions)); //use when frontend and backend are on different origins
 
 
 app.use(express.json());
