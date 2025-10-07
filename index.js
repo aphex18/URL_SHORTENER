@@ -8,14 +8,6 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve frontend files
-app.use(express.static(path.join(__dirname, 'frontend')));
-
-// SPA fallback
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/index.html'));
-});
-
 const corsOptions = {
   origin: [
     'https://urlshortener10.vercel.app',      // If you serve frontend on vercel
@@ -47,15 +39,23 @@ app.use("/user", userRouter);
 
 app.use(urlRouter);
 
+// Serve frontend files
+app.use(express.static(path.join(__dirname, 'frontend')));
+
 const PORT = process.env.PORT ?? 8000;
 
 app.get('/', (req, res) => {
-    return res.json({status: "Server is running"})
+  return res.json({status: "Server is running"})
+});
+
+// SPA fallback
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
-})
+});
 
 
 
