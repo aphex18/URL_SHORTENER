@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "node --watch index.js",
-    "start": "pnpm db:push --force && node index.js",
+    "start": "node index.js",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio"
   },
