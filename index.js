@@ -35,18 +35,8 @@ app.use(express.json());
 
 app.use(authenticationMiddleware);
 
-app.use("/user", userRouter);
-
-app.use(urlRouter);
-
 // Serve frontend files
 app.use(express.static(path.join(__dirname, 'frontend')));
-
-const PORT = process.env.PORT ?? 8000;
-
-app.get('/', (req, res) => {
-  return res.json({status: "Server is running"})
-});
 
 // Explicit routes for HTML pages
 app.get('/login.html', (req, res) => {
@@ -65,11 +55,20 @@ app.get('/dashboard.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/dashboard.html'));
 });
 
+app.use("/user", userRouter);
+
+app.use(urlRouter);
+
+app.get('/', (req, res) => {
+  return res.json({status: "Server is running"})
+});
 
 // SPA fallback
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/index.html'));
 });
+
+const PORT = process.env.PORT ?? 8000;
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
