@@ -42,11 +42,23 @@ app.use(urlRouter);
 // Serve frontend files
 app.use(express.static(path.join(__dirname, 'frontend')));
 
-const PORT = process.env.PORT ?? 8000;
-
-app.get('/', (req, res) => {
-  return res.json({status: "Server is running"})
+// Explicit routes for HTML pages
+app.get('/login.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/login.html'));
 });
+
+app.get('/signup.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/signup.html'));
+});
+
+app.get('/shorten.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/shorten.html'));
+});
+
+app.get('/dashboard.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/dashboard.html'));
+});
+
 
 // SPA fallback
 app.get('*', (req, res) => {
@@ -57,6 +69,11 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
+const PORT = process.env.PORT ?? 8000;
+
+app.get('/', (req, res) => {
+  return res.json({status: "Server is running"})
+});
 
 
 
